@@ -1,0 +1,41 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 7rem;
+  box-shadow: 0 4px 3px -5px #000000;
+}
+
+.linkStyles {
+  text-decoration-line: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.linkStyles:hover {
+  text-decoration-line: underline;
+}
+
+.logoBtn {
+  font-size: 25px;
+}
+
+.logoBtn:hover {
+  text-decoration-line: none;
+}
+
+.cartBtn {
+  display: flex;
+  gap: 2px;
+}
+
+.cartBtn:hover {
+  text-decoration-line: none;
+}
+
+.navBtnContainer {
+  display: flex;
+  gap: 1rem;
+}
