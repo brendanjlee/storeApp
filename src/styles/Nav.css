@@ -15,10 +15,6 @@
   font-weight: 500;
 }
 
-.linkStyles:hover {
-  text-decoration-line: underline;
-}
-
 .logoBtn {
   font-size: 25px;
 }
@@ -32,11 +28,21 @@
   gap: 2px;
 }
 
-.cartBtn:hover {
-  text-decoration-line: none;
-}
-
 .navBtnContainer {
   display: flex;
   gap: 1rem;
+}
+
+.navBtn {
+  background-color: white;
+  cursor: pointer;
+  padding: 15px 18px;
+  border-radius: 10px;
+  border-style: none;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.navBtn:hover {
+  background-color: #f1f5f9;
 }
