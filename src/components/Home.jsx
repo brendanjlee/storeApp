@@ -1,6 +1,6 @@
-import '../styles/Home.css'
+import "../styles/Home.css";
 
-function Home() {
+const Home = () => {
   return (
     <div className="home">
       <div className="homeTextContainer">
@@ -13,11 +13,11 @@ function Home() {
         <p>placeholder</p>
       </div>
       <div className="homeBtnContainer">
-        <button className='btn-dark'>Shop Now</button>
+        <button className="btn-dark">Shop Now</button>
         <button>Github Repo</button>
       </div>
     </div>
   );
-}
+};
 
 export default Home;
