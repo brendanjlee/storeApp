@@ -1,0 +1,23 @@
+.shop {
+  display: flex;
+}
+
+.shopNav {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  /* border-style: solid; */
+}
+
+.shopNav > button {
+  background-color: white;
+}
+
+.itemList {
+  flex: 5;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 15px;
+  /* border-style: solid; */
+}
