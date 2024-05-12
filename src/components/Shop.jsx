@@ -1,6 +1,6 @@
 import Nav from "./Nav";
 import { ItemList } from "./ItemCard";
-import items from "../items";
+import { items } from "../items";
 import "../styles/Shop.css";
 
 const ShopNav = () => {
