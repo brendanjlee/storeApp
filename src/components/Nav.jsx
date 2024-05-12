@@ -11,23 +11,19 @@ const Nav = () => {
         Bongo Market
       </Link>
       <div className="navBtnContainer">
-        <button className="navBtn">
-          <Link className="linkStyles" to="/">
-            Home
-          </Link>
-        </button>
-        <button className="navBtn">
-          <Link className="linkStyles" to="/shop">
-            Shop
-          </Link>
-        </button>
-        <button className="navBtn">
-          <Link className="linkStyles cartBtn" to="/cart">
+        <Link className="linkStyles" to="/">
+          <button className="navBtn">Home</button>
+        </Link>
+        <Link className="linkStyles" to="/shop">
+          <button className="navBtn">Shop</button>
+        </Link>
+        <Link className="linkStyles" to="/cart">
+          <button className="navBtn">
             <p>Cart</p>
             <CartIcon />
             <p>0</p> {/* this should take in a prop */}
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </nav>
   );

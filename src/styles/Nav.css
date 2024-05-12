@@ -23,14 +23,9 @@
   text-decoration-line: none;
 }
 
-.cartBtn {
-  display: flex;
-  gap: 2px;
-}
-
 .navBtnContainer {
   display: flex;
-  gap: 1rem;
+  gap: 1px;
 }
 
 .navBtn {
@@ -39,8 +34,8 @@
   padding: 15px 18px;
   border-radius: 10px;
   border-style: none;
-  font-size: 15px;
-  font-weight: 700;
+  display: flex;
+  gap: 2px;
 }
 
 .navBtn:hover {
