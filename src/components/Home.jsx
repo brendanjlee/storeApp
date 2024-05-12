@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import Nav from "./Nav";
+import Shop from "./Shop";
 
 const Home = () => {
   return (
@@ -16,7 +18,9 @@ const Home = () => {
           <p>placeholder</p>
         </div>
         <div className="homeBtnContainer">
-          <button className="btn-dark">Shop Now</button>
+          <Link to="Shop">
+            <button className="btn-dark">Shop Now</button>
+          </Link>
           <button>Github Repo</button>
         </div>
       </div>

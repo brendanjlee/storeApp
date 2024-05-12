@@ -12,7 +12,7 @@
 
 .cartTable thead {
   border-style: solid;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .cartTable th,
@@ -32,6 +32,11 @@
 
 .cartProduct img {
   max-height: 40px;
+}
+
+.cartQuantity {
+  display: flex;
+  gap: 2px;
 }
 
 .cartBtn {

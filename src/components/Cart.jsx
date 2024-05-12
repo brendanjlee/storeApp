@@ -19,10 +19,12 @@ const CartProductCell = ({ title, imageUrl }) => {
 
 const CartQuantityCell = ({ quantity }) => {
   return (
-    <td className="cartQuantity">
-      <button className="cartBtn">-</button>
-      {quantity}
-      <button className="cartBtn">+</button>
+    <td>
+      <div className="cartQuantity">
+        <button className="cartBtn">-</button>
+        <p>{quantity}</p>
+        <button className="cartBtn">+</button>
+      </div>
     </td>
   );
 };
