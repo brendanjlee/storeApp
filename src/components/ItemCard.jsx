@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../styles/ItemCard.css";
 
-const ItemCard = ({ imageUrl, title, price, rate, rateCount }) => {
+const ItemCard = ({ imageUrl, id, title, price, rate, rateCount }) => {
   // truncate long titles
   const maxStrLen = 33;
   if (title.length > maxStrLen) {
@@ -9,22 +10,27 @@ const ItemCard = ({ imageUrl, title, price, rate, rateCount }) => {
   }
 
   return (
-    <div className="itemCard">
-      <div className="itemImgContainer">
-        <img src={imageUrl} alt="sample image" />
-      </div>
-      <div className="itemInfoContainer">
-        <div className="itemTitleContainer">
-          <h3>{title}</h3>
-          <p>${price}</p>
+    <Link
+      to={`/product/${id}`}
+      style={{ textDecoration: "none", color: "black" }}
+    >
+      <div className="itemCard">
+        <div className="itemImgContainer">
+          <img src={imageUrl} alt="sample image" />
         </div>
-        <div className="ratingContainer">
-          <p>
-            Rating: {rate} ({rateCount})
-          </p>
+        <div className="itemInfoContainer">
+          <div className="itemTitleContainer">
+            <h3>{title}</h3>
+            <p>${price}</p>
+          </div>
+          <div className="ratingContainer">
+            <p>
+              Rating: {rate} ({rateCount})
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

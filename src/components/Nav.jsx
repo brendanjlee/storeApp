@@ -19,9 +19,9 @@ const Nav = () => {
         </Link>
         <Link className="linkStyles" to="/cart">
           <button className="navBtn">
-            <p>Cart</p>
+            <span>Cart</span>
             <CartIcon />
-            <p>0</p> {/* this should take in a prop */}
+            <span>0</span>
           </button>
         </Link>
       </div>

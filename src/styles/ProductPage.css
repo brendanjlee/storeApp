@@ -1,0 +1,54 @@
+.productPage {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.backBtn {
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.backBtn:hover {
+  background-color: #e9ecf0;
+}
+
+.productInfo {
+  display: flex;
+  height: 400px;
+  gap: 3rem;
+}
+
+.productLeft {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #e9ecf0;
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inStock {
+  display: flex;
+  gap: 5px;
+}
+
+.quantityContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.addToCartBtn {
+  padding: 0;
+  width: 200px;
+  height: 50px;
+}
