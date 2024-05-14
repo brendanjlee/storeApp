@@ -1,45 +1,110 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import Nav from "./Nav";
-import { ItemList, ItemCard } from "./ItemCard";
+import { ItemCard } from "./ItemCard";
 import "../styles/Shop.css";
 
-const ShopNav = () => {
+const initialState = {
+  category: "https://fakestoreapi.com/products",
+  products: null,
+  error: null,
+  loading: true,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "fetch": {
+      return { ...state, loading: true };
+    }
+    case "success": {
+      return { ...state, loading: false, products: action.payload };
+    }
+    case "fail": {
+      return { ...state, loading: false, error: action.payload };
+    }
+    case "setCategory": {
+      return { ...state, category: action.payload };
+    }
+    default:
+      return state;
+  }
+};
+
+const useProduct = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({ type: "fetch" });
+    fetch(state.category)
+      .then((response) => response.json())
+      .then((response) => dispatch({ type: "success", payload: response }))
+      .catch((error) => dispatch({ type: "fail", payload: error }));
+  }, [state.category]);
+
+  // return { products, error, loading };
+  const setCategory = (category) => {
+    dispatch({ type: "setCategory", payload: category });
+  };
+
+  return { ...state, setCategory };
+};
+
+const ShopNav = ({ setCategory }) => {
+  const handleChange = (category) => {
+    setCategory(category);
+  };
   return (
     <div className="shopNav">
-      <button>All</button>
-      <button>Men's Clothing</button>
-      <button>Women's Clothing</button>
-      <button>Jewlery</button>
-      <button>Electronics</button>
+      <button onClick={() => handleChange("https://fakestoreapi.com/products")}>
+        All
+      </button>
+      <button
+        onClick={() =>
+          handleChange(
+            "https://fakestoreapi.com/products/category/men's clothing"
+          )
+        }
+      >
+        Men's Clothing
+      </button>
+      <button
+        onClick={() =>
+          handleChange(
+            "https://fakestoreapi.com/products/category/women's clothing"
+          )
+        }
+      >
+        Women's Clothing
+      </button>
+      <button
+        onClick={() =>
+          handleChange("https://fakestoreapi.com/products/category/jewelery")
+        }
+      >
+        Jewlery
+      </button>
+      <button
+        onClick={() =>
+          handleChange("https://fakestoreapi.com/products/category/electronics")
+        }
+      >
+        Electronics
+      </button>
     </div>
   );
 };
 
-const useProduct = () => {
-  const [products, setProducts] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((response) => setProducts(response))
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
-  }, []);
-
-  return { products, error, loading };
-};
-
 const Shop = () => {
-  const { products, error, loading } = useProduct();
+  const { products, error, loading, setCategory } = useProduct();
 
   if (loading) {
     return (
       <>
         <Nav />
         <div className="shop">
-          <h1>Loading Products...</h1>
+          <ShopNav />
+          <div className="loading">
+            <h1>Loading Products...</h1>
+          </div>
         </div>
       </>
     );
@@ -60,7 +125,7 @@ const Shop = () => {
     <>
       <Nav />
       <div className="shop">
-        <ShopNav />
+        <ShopNav setCategory={setCategory} />
         <div className="itemList">
           {products.map((item) => (
             <ItemCard
