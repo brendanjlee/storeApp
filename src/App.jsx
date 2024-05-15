@@ -21,7 +21,7 @@ const App = () => {
   const addToCart = (item) => {
     const duplicate = cartItems.some((cartItem) => cartItem.id === item.id);
     if (duplicate) {
-      adjustCount(item);
+      adjustCount(item.id, item.quantity);
     } else {
       setCartCount(cartCount + 1);
       setCartItems([...cartItems, item]);
@@ -34,10 +34,11 @@ const App = () => {
     setCartItems(cartItems.filter((item) => item.id != id));
   };
 
-  const adjustCount = (item) => {
+  const adjustCount = (id, count) => {
     const newCart = cartItems.map((cartItem) => {
-      if (cartItem.id == item.id) {
-        cartItem.quantity += item.quantity;
+      if (cartItem.id == id) {
+        if (count < 1 && cartItem.quantity < 2) return cartItem;
+        cartItem.quantity += count;
         return cartItem;
       } else {
         return cartItem;

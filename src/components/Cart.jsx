@@ -17,24 +17,43 @@ const CartProductCell = ({ title, imageUrl }) => {
   );
 };
 
-const CartQuantityCell = ({ quantity }) => {
+const CartQuantityCell = ({
+  id,
+  quantity,
+  handleIncrement,
+  handleDecrement,
+}) => {
   return (
     <td>
       <div className="cartQuantity">
-        <button className="cartBtn">-</button>
+        <button className="cartBtn" onClick={() => handleDecrement(id)}>
+          -
+        </button>
         <p>{quantity}</p>
-        <button className="cartBtn">+</button>
+        <button className="cartBtn" onClick={() => handleIncrement(id)}>
+          +
+        </button>
       </div>
     </td>
   );
 };
 
-const CartRow = ({ item, handleRemoveBtn }) => {
+const CartRow = ({
+  item,
+  handleRemoveBtn,
+  handleIncrement,
+  handleDecrement,
+}) => {
   const totalPrice = (item.price * item.quantity).toFixed(2);
   return (
     <tr key={item.id}>
       <CartProductCell title={item.title} imageUrl={item.image} />
-      <CartQuantityCell quantity={item.quantity} />
+      <CartQuantityCell
+        id={item.id}
+        quantity={item.quantity}
+        handleIncrement={handleIncrement}
+        handleDecrement={handleDecrement}
+      />
       <td>${item.price}</td>
       <td>${totalPrice}</td>
       <td>
@@ -47,7 +66,15 @@ const CartRow = ({ item, handleRemoveBtn }) => {
 };
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useContext(ShopContext);
+  const { cartItems, removeFromCart, adjustCount } = useContext(ShopContext);
+
+  const handleIncrement = (id) => {
+    adjustCount(id, 1);
+  };
+
+  const handleDecrement = (id) => {
+    adjustCount(id, -1);
+  };
 
   const handleRemoveBtn = (id) => {
     removeFromCart(id);
@@ -73,6 +100,8 @@ const Cart = () => {
                 <CartRow
                   key={item.id}
                   item={item}
+                  handleIncrement={handleIncrement}
+                  handleDecrement={handleDecrement}
                   handleRemoveBtn={handleRemoveBtn}
                 />
               );
