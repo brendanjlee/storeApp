@@ -1,8 +1,9 @@
-# React + Vite
+# Shopping Cart - Bongo MarketB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I built this for the goal of mastering ReactJS features such as custom hooks, Context API, and react-router-dom
 
-Currently, two official plugins are available:
+![Screenshot 2024-05-15 at 10 49 48 PM](https://github.com/brendanjlee/storeApp/assets/31088155/4e7b5851-cc16-498d-8fc9-55e79f63edda)
+![Screenshot 2024-05-15 at 10 50 03 PM](https://github.com/brendanjlee/storeApp/assets/31088155/cddb4ee7-869c-4572-8fb9-1d9467832bd2)
+![Screenshot 2024-05-15 at 10 50 51 PM](https://github.com/brendanjlee/storeApp/assets/31088155/12321721-8075-4818-8474-db7b885188f9)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Check out the live [demo](https://bongomarket-brendan-lees-projects-277e8004.vercel.app/)
