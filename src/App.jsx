@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useFetcher,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, createContext, useEffect } from "react";
 import "./styles/App.css";
 import Home from "./components/Home.jsx";
