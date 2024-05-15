@@ -311,48 +311,6 @@ const cartItems = [
       count: 500,
     },
   },
-  {
-    id: 4,
-    cartCount: 3,
-    title: "Mens Casual Slim Fit",
-    price: 15.99,
-    description:
-      "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-    category: "men's clothing",
-    image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-    rating: {
-      rate: 2.1,
-      count: 430,
-    },
-  },
-  {
-    id: 7,
-    cartCount: 3,
-    title: "White Gold Plated Princess",
-    price: 9.99,
-    description:
-      "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
-    category: "jewelery",
-    image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
-    rating: {
-      rate: 3,
-      count: 400,
-    },
-  },
-  {
-    id: 8,
-    cartCount: 3,
-    title: "Pierced Owl Rose Gold Plated Stainless Steel Double",
-    price: 10.99,
-    description:
-      "Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel",
-    category: "jewelery",
-    image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
-    rating: {
-      rate: 1.9,
-      count: 100,
-    },
-  },
 ];
 
 export { items, cartItems };

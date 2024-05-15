@@ -1,8 +1,8 @@
+import { useContext } from "react";
+import { ShopContext } from "../App";
 import Nav from "./Nav";
 import TrashIcon from "../assets/TrashIcon.svg?react";
 import "../styles/Cart.css";
-
-import { cartItems } from "../items";
 
 const CartProductCell = ({ title, imageUrl }) => {
   const maxStrLen = 45;
@@ -29,16 +29,16 @@ const CartQuantityCell = ({ quantity }) => {
   );
 };
 
-const CartRow = ({ item }) => {
-  const totalPrice = (item.price * item.cartCount).toFixed(2);
+const CartRow = ({ item, handleRemoveBtn }) => {
+  const totalPrice = (item.price * item.quantity).toFixed(2);
   return (
     <tr key={item.id}>
       <CartProductCell title={item.title} imageUrl={item.image} />
-      <CartQuantityCell quantity={item.cartCount} />
+      <CartQuantityCell quantity={item.quantity} />
       <td>${item.price}</td>
       <td>${totalPrice}</td>
       <td>
-        <button className="cartDelBtn">
+        <button className="cartDelBtn" onClick={() => handleRemoveBtn(item.id)}>
           <TrashIcon />
         </button>
       </td>
@@ -47,6 +47,12 @@ const CartRow = ({ item }) => {
 };
 
 const Cart = () => {
+  const { cartItems, removeFromCart } = useContext(ShopContext);
+
+  const handleRemoveBtn = (id) => {
+    removeFromCart(id);
+  };
+
   return (
     <>
       <Nav />
@@ -63,13 +69,19 @@ const Cart = () => {
           </thead>
           <tbody>
             {cartItems.map((item) => {
-              return <CartRow key={item.id} item={item} />;
+              return (
+                <CartRow
+                  key={item.id}
+                  item={item}
+                  handleRemoveBtn={handleRemoveBtn}
+                />
+              );
             })}
             <tr className="totalRow">
               <td>Total (12)</td>
               <td></td>
               <td></td>
-              <td>$9999</td>
+              <td>${999}</td>
               <td></td>
             </tr>
           </tbody>

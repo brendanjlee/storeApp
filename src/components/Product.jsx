@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { ShopContext } from "../App";
 import Nav from "./Nav";
 import BackBtnIcon from "../assets/BackBtn.svg?react";
 import InStockIcon from "../assets/InStock.svg?react";
 import "../styles/ProductPage.css";
 
 const ProductPage = () => {
+  const { addToCart } = useContext(ShopContext);
   const navigate = useNavigate();
   const { productId } = useParams();
   const [count, setCount] = useState(1);
@@ -27,6 +29,12 @@ const ProductPage = () => {
 
   const increment = () => {
     setCount(count + 1);
+  };
+
+  const handleAddToCart = () => {
+    item.quantity = count;
+    addToCart(item);
+    setCount(1);
   };
 
   if (loading)
@@ -65,7 +73,9 @@ const ProductPage = () => {
               </button>
             </div>
             <p>{item.description}</p>
-            <button className="addToCartBtn">Add to Cart</button>
+            <button className="addToCartBtn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
