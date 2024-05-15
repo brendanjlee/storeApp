@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../App";
 import Nav from "./Nav";
 import TrashIcon from "../assets/TrashIcon.svg?react";
@@ -67,6 +67,36 @@ const CartRow = ({
 
 const Cart = () => {
   const { cartItems, removeFromCart, adjustCount } = useContext(ShopContext);
+  const [totalCost, setTotalCost] = useState(0);
+  const [allCount, setAllCount] = useState(0);
+
+  useEffect(() => {
+    const getTotalCost = () => {
+      let total = 0;
+      cartItems.forEach((item) => {
+        total += item.price * item.quantity;
+      });
+      return truncate(total);
+    };
+
+    const getTotalCount = () => {
+      let count = 0;
+      cartItems.forEach((item) => {
+        count += item.quantity;
+      });
+      return count;
+    };
+
+    setTotalCost(getTotalCost());
+    setAllCount(getTotalCount());
+  }, [cartItems]);
+
+  const truncate = (num) => {
+    return parseFloat(num.toFixed(3)).toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
 
   const handleIncrement = (id) => {
     adjustCount(id, 1);
@@ -107,10 +137,10 @@ const Cart = () => {
               );
             })}
             <tr className="totalRow">
-              <td>Total (12)</td>
+              <td>Total ({allCount})</td>
               <td></td>
               <td></td>
-              <td>${999}</td>
+              <td>${totalCost}</td>
               <td></td>
             </tr>
           </tbody>
